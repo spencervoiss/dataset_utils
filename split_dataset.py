@@ -4,7 +4,9 @@ FILE: split_dataset.py
 AUTH: Spencer Voiss
 DATE: 25 Aug 2022
 DESC: Split up a collection of individual datapoint 
-  files into train, validation, and test datasets
+  files into train, validation, and test datasets. Will
+  split images of the same names into the dataset as well
+  if specified.
 """
 
 from __future__ import annotations
