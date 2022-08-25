@@ -1,6 +1,6 @@
 # Lint as: python3
 """
-FILE: splt_dataset.py
+FILE: split_dataset.py
 AUTH: Spencer Voiss
 DATE: 25 Aug 2022
 DESC: Split up a collection of individual datapoint 
