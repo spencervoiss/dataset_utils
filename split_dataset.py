@@ -83,39 +83,44 @@ except AssertionError as err:
   logging.error(err)
 
 # Create the output directories
-train_data_dir = os.path.join(output_dir, "annotations/train")
-test_data_dir = os.path.join(output_dir, "annotations/test")
-valid_data_dir = os.path.join(output_dir, "annotations/valid")
-train_imgs_dir = os.path.join(output_dir, "images/train")
-valid_imgs_dir = os.path.join(output_dir, "images/valid")
-test_imgs_dir = os.path.join(output_dir, "images/test")
-annotations_dir = os.path.join(output_dir, "annotations")
-images_dir = os.path.join(output_dir, "images")
+train_data_dir = os.path.join(output_dir, "train/annotations")
+test_data_dir = os.path.join(output_dir, "test/annotations")
+valid_data_dir = os.path.join(output_dir, "valid/annotations")
+train_imgs_dir = os.path.join(output_dir, "train/images")
+valid_imgs_dir = os.path.join(output_dir, "valid/images")
+test_imgs_dir = os.path.join(output_dir, "test/images")
+train_dir = os.path.join(output_dir, "train")
+valid_dir = os.path.join(output_dir, "valid")
+test_dir = os.path.join(output_dir, "test")
 
 try:
   os.mkdir(output_dir)
 except FileExistsError as err:
   logger.warning("Directory %s already exists" % output_dir)
 try:
-  os.mkdir(annotations_dir)
-except FileExistsError as err:
-  logger.warning("Annotations directory already exists. Files may be overwritten")
-try:
-  os.mkdir(images_dir)
-except FileExistsError as err:
-  logger.warning("Images directory already exists. Files may be overwritten")
-try:
-  os.mkdir(train_data_dir)
+  os.mkdir(train_dir)
 except FileExistsError as err:
   logger.warning("Train directory already exists. Files may be overwritten")
 try:
-  os.mkdir(valid_data_dir)
+  os.mkdir(valid_dir)
 except FileExistsError as err:
   logger.warning("Validation directory already exists. Files may be overwritten")
 try:
-  os.mkdir(test_data_dir)
+  os.mkdir(test_dir)
 except FileExistsError as err:
   logger.warning("Test directory already exists. Files may be overwritten")
+try:
+  os.mkdir(train_data_dir)
+except FileExistsError as err:
+  logger.warning("Training annotations directory already exists. Files may be overwritten")
+try:
+  os.mkdir(valid_data_dir)
+except FileExistsError as err:
+  logger.warning("Validation annotations directory already exists. Files may be overwritten")
+try:
+  os.mkdir(test_data_dir)
+except FileExistsError as err:
+  logger.warning("Test dannotations irectory already exists. Files may be overwritten")
 if img_dir:
   try:
     os.mkdir(test_imgs_dir)
@@ -128,7 +133,7 @@ if img_dir:
   try:
     os.mkdir(valid_imgs_dir)
   except FileExistsError as err:
-    logger.warning("Valid images directory already exists. Files may be overwritten")
+    logger.warning("Validation images directory already exists. Files may be overwritten")
 
 # Read in all files of the specified type 
 inputs_noExtension = []
