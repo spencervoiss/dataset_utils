@@ -95,6 +95,7 @@ edges_trackbar_1_name = "Param 1"
 edges_trackbar_2_name = "Param 2"
 edges_trackbar_3_name = "Param 3"
 edges_window_name = "Detected Edges"
+# TODO: Make into a dictionary like the denoising algorithms
 edge_detection_algorithms = [
     "No Edge Detection",
     "Canny Edge Detection",
@@ -162,7 +163,8 @@ while key != 113:
     cv2.imshow(denoise_window_name, image_filtered_drawn)
 
     image_edges = image_filtered.copy()
-    edges_algorithm_name = edge_detection_algorithms[edges_algorithm_idx]
+    edges_algorithm_name = edge_detection_algorithm_names[edges_algorithm_idx]
+    edges_param_names = edges_algorithms[edges_algorithm_name]
     image_edges_drawn = cv2.putText(
         image_edges.copy(),
         edges_algorithm_name,
@@ -172,6 +174,16 @@ while key != 113:
         TEXT_COLOR,
         FONT_THICKNESS,
     )
+    for idx, param in enumerate(edges_param_names):
+        image_edges_drawn = cv2.putText(
+            image_edges_drawn,
+            f"Param {idx + 1}: {param}",
+            PARAM_ORIGINS[idx],
+            FONT,
+            FONT_SCALE,
+            TEXT_COLOR,
+            FONT_THICKNESS,
+        )
     cv2.imshow(edges_window_name, image_edges_drawn)
     key = cv2.waitKey(1)
 
